@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Skin Cancer Detection</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Skin Cancer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" id="home">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Detect Skin Cancer</h1>
+            <p class="lead">Upload an image to find out if skin cancer is detected.</p>
+            <div class="row">
+                <div class="col-md-8">
+                    <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="file" id="fileInput" required>
+                            <label class="custom-file-label" for="fileInput">Choose file</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    {% if file_path %}
+                    <img src="{{ url_for('static', filename='uploads/'+file_path) }}" alt="" class="img-fluid border"
+                        id="preview">
+                    {% else %}
+                    <img src="https://redthread.uoregon.edu/files/original/affd16fd5264cab9197da4cd1a996f820e601ee4.png"
+                        alt="" class="img-fluid border" id="preview">
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if result %}
+            <div class="alert alert-{% if value == 0 %}danger{% else %}primary{% endif %} mt-4" role="alert">
+                Prediction: {{ result }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container" id="about">
+        <h2>About Skin Cancer</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    Skin cancer is the uncontrolled growth of abnormal skin cells. It occurs when DNA damage to skin
+                    cells (most often caused by ultraviolet radiation from sunshine or tanning beds) triggers mutations,
+                    or genetic defects, that lead the skin cells to multiply rapidly and form malignant tumors.
+                </p>
+                <p>
+                    The two most common types of skin cancer are basal cell carcinoma and squamous cell carcinoma. These
+                    are known as non-melanoma skin cancer. A third type of skin cancer is melanoma, which is less common
+                    but more dangerous.
+                </p>
+                <p>
+                    Symptoms of skin cancer include a new growth or a sore that doesn’t heal. Skin cancer can develop
+                    anywhere on your body, but it is most likely to appear on sun-exposed areas, such as the face,
+                    scalp, lips, ears, neck, chest, arms, and hands, and on the legs in women.
+                </p>
+                <p>
+                    To reduce your risk of skin cancer, avoid prolonged sun exposure, use sunscreen, wear protective
+                    clothing, and avoid tanning beds. Regular skin examinations by a healthcare professional and
+                    self-examinations for any new or unusual growths or changes can help detect skin cancer early.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/skin-cancer.png') }}" alt="Skin Cancer"
+                    class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="contact">
+        <h2>Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p>If you have any questions or need further information, please feel free to contact us:</p>
+                <ul class="list-unstyled">
+                    <li><strong>Email:</strong> info@ustc.com</li>
+                    <li><strong>Phone:</strong>+88000000</li>
+                    <li><strong>Address:</strong> USTC, Chattogram</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-light text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Skin Cancer Detection. All Rights Reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#home">Home</a></li>
+                <li class="list-inline-item"><a href="#about">About Skin Cancer</a></li>
+                <li class="list-inline-item"><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- <div id="resultPopup" class="result-popup">
+        <div class="result-popup-content">
+            <span class="close">&times;</span>
+            <p id="resultText"></p>
+            {% if result %}
+            <div class="alert alert-info mt-3">
+                Prediction: {{ result }}
+            </div>
+            {% endif %}
+        </div>
+    </div> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

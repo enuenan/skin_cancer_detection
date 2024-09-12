@@ -1,0 +1,43 @@
+
+# Project Setup Guide
+
+## 1. Check if Python is installed
+Ensure that Python is installed on your system by running the following command in your terminal or command prompt:
+
+```
+python --version
+```
+
+If Python is not installed, please download and install it from the official Python website: https://www.python.org/downloads/
+
+## 2. Update PIP or Install PIP
+To ensure you have the latest version of PIP (Python's package installer), run the following command:
+
+```
+python.exe -m pip install --upgrade pip
+```
+
+If PIP is not installed, this command will install it for you.
+
+## 3. Install the Required Packages
+Navigate to the directory where your project is located and install the required packages listed in `requirements.txt`:
+
+```
+pip install -r requirements.txt
+```
+
+This will install all the necessary dependencies for the project.
+
+## 4. Run the Project
+You can run the project using one of the following commands:
+
+```
+python app.py
+```
+OR
+```
+python wsgi.py
+```
+
+Choose the command that suits your deployment setup.
+

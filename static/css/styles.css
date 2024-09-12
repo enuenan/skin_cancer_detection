@@ -1,0 +1,89 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #ffffff, #e0e0e0);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar-brand {
+    font-weight: bold;
+}
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.3rem;
+}
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Browse";
+}
+.custom-file-label::after {
+    content: "Choose file";
+}
+.result-popup {
+    display: none;
+    position: fixed;
+    z-index: 9;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.result-popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+}
+.footer ul {
+    padding: 0;
+    list-style-type: none;
+}
+.footer ul li {
+    display: inline;
+    margin: 0 0.5rem;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .result-popup-content {
+        width: 90%;
+    }
+    .footer ul {
+        text-align: center;
+    }
+    .footer ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}

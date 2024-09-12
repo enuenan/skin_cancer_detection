@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Skin Cancer Detection</h1>
+        <a href="/">
+            <button type="button" class="btn btn-primary btn-block">Reload</button>
+        </a>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Upload an image:</label>
+                <input type="file" name="file" id="file" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+
+        {% if result %}
+        <div class="alert alert-info mt-3">
+            Prediction: {{ result }}
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="alert alert-danger mt-3">
+            Error: {{ error }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
